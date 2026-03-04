@@ -1,0 +1,53 @@
+\RequirePackage{plautopatch}
+\documentclass[fontsize=10.5pt, a4paper]{jlreq}
+
+% === プリアンブル ===
+\input{contents/preamble.tex}
+
+% === レイアウト ===
+% \setlength{\parindent}{0pt}       % インデントなし
+% \setlength{\parskip}{0.6em}       % 段落間に空きを入れる
+
+% === 参照 ===
+% --- thebibliography ----
+% \usepackage[superscript]{cite}      % 引用文献
+
+% --- BiBTeX ---
+% \usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}  % BiBLaTeX
+% \addbibresource{references.bib}       % BiBLaTeXのファイル名
+
+% === タイトル ===
+\title{タイトル}
+\subtitle{サブタイトル}
+\experimentDate{20XX年XX月XX日}
+\submissionDate{\today}
+\affiliation{所属}
+\studentID{学籍番号}
+\author{氏名}
+
+
+\begin{document}
+\maketitle
+
+% === 目次 ===
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+\clearpage
+
+% === 本文 ===
+\setcounter{page}{1}
+\input{contents/body.tex}
+
+% === 参考文献 ===
+\newpage
+\thispagestyle{empty}
+\addtocounter{page}{-1}
+
+% --- thebibliography ---
+% \input{contents/reference.tex}
+
+% --- BiBTeX ---
+% \printbibliography
+
+\end{document}
