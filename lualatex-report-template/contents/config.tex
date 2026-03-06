@@ -1,0 +1,47 @@
+% === レイアウト・装飾 ===
+% ---余白 ---
+\geometry{
+  top=25mm,
+  bottom=25mm,
+  left=20mm,
+  right=20mm
+}
+
+% --- 句読点 ---
+% \usepackage{newunicodechar}       % 「。、」を「．，」に変更
+% \newunicodechar{、}{，}
+% \newunicodechar{。}{．}
+
+% --- インデント・段落間の空白 ---
+% \setlength{\parindent}{0pt}       % インデントなし
+% \setlength{\parskip}{0.6em}       % 段落間に空きを入れる
+
+% --- プログラムコード ---
+\lstset{
+  basicstyle=\ttfamily\small,       % 基本のフォント
+  commentstyle=\color{green!60!black},  % コメントの色
+  keywordstyle=\color{blue},        % キーワードの色（int, forなど）
+  stringstyle=\color{purple},       % 文字列の色
+  frame=single,                     % 枠で囲む
+  breaklines=true,                  % 長い行を折り返す
+  numbers=left,                     % 行番号を左に
+  numberstyle=\tiny\color{gray},    % 行番号のスタイル
+  stepnumber=1,                     % 行番号を1行ごとに表示
+  columns=fixed,                    % 文字幅を等間隔に
+  basewidth=0.5em,
+  showstringspaces=false,           % 文字列中のスペース記号を表示しない
+}
+
+% === 図表・式の番号設定 ===
+\numberwithin{equation}{section}    % 数式番号を節ごとに
+\counterwithin{table}{section}      % 表番号を節ごとに
+\counterwithin{figure}{section}     % 図番号を節ごとに
+
+
+% === 参考文献 ===
+% --- thebibliography ----
+% \usepackage[superscript]{cite}      % 参考文献
+
+% --- BiBTeX ---
+% \usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}  % BiBLaTeX
+% \addbibresource{references.bib}     % BiBLaTeXのファイル名

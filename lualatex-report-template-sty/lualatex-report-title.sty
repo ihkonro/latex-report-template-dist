@@ -1,0 +1,132 @@
+% --- 新しい入力コマンドの定義 ---
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand{\studentID}[1]{\def\@studentID{#1}}
+\newcommand{\affiliation}[1]{\def\@affiliation{#1}}
+\newcommand{\experimentDate}[1]{\def\@experimentDate{#1}}
+\newcommand{\submissionDate}[1]{\def\@submissionDate{#1}}
+
+% --- 初期値の設定 ---
+\subtitle{}
+\studentID{}
+\affiliation{}
+\experimentDate{}
+\submissionDate{\today}
+
+% --- 指定がない場合は 1: ノーマル にする ---
+\providecommand{\titleStyle}{1}
+
+% --- 空欄 {} の場合は 1: ノーマル にする ---
+\ifnum0\titleStyle=0\relax
+  \def\titleStyle{1}
+\fi
+
+% --- 変数による切り替え ---
+\ifcase\titleStyle
+  % 0: 未使用（TeXの \ifcase は0から始まるため空けておく）
+\or
+  % ==========================================
+  % 1: ノーマル版
+  % ==========================================
+  \renewcommand{\maketitle}{
+    % --- 表紙 ---
+    \begin{titlepage}
+      \centering
+      \sffamily\gtfamily
+      \vspace*{2.5cm}
+      {\Huge \@title }\\[1.2em]
+      \ifx\@subtitle\@empty \else
+        {\Large \@subtitle}
+      \fi
+      \vfill
+      \begin{tabular}{@{}ll@{}}
+        \ifx\@experimentDate\@empty \else {\large 実験日} & {\large ：\@experimentDate}\\[0.4em] \fi
+        \ifx\@submissionDate\@empty \else {\large 提出日} & {\large ：\@submissionDate}\\[0.4em] \fi
+        \ifx\@affiliation\@empty    \else {\large 所属}   & {\large ：\@affiliation}\\[0.4em] \fi
+        \ifx\@studentID\@empty      \else {\large 学籍番号} & {\large ：\@studentID}\\[0.4em] \fi
+        {\large 氏名}     & {\large ：\@author}
+      \end{tabular}
+      \vspace*{2cm}
+    \end{titlepage}
+    % --- 目次 ---
+    \newpage
+    \thispagestyle{empty}
+    \tableofcontents
+    \newpage
+    % --- 本文開始の設定 ---
+    \setcounter{page}{1}
+  }
+
+\or
+  % ==========================================
+  % 2: シンプル版
+  % ==========================================
+  \renewcommand{\@maketitle}{
+    \newpage
+    \null
+    \begin{center}
+      \sffamily\gtfamily
+      % --- 1. タイトルとサブタイトル ---
+      {\huge \@title \par}
+      \ifx\@subtitle\@empty
+        \vspace{0.8em}
+      \else
+        \vspace{0.4em}
+        {\large \@subtitle \par}
+        \vspace{0.4em}
+      \fi
+    \end{center}
+    
+    % --- 2. 所属・学籍番号と氏名 ---
+    \begin{flushright}
+      \sffamily\gtfamily
+      {\large
+        \ifx\@affiliation\@empty
+          \ifx\@studentID\@empty \else \@studentID \\[0.4em] \fi
+        \else
+          \@affiliation
+          \ifx\@studentID\@empty \else \quad \@studentID \fi
+          \\[0.4em]
+        \fi
+        \@author \par
+      }
+    \end{flushright}
+  }
+
+\or
+  % ==========================================
+  % 3: 今後の拡張用スタイル（例：学会用など）
+  % ==========================================
+  % \renewcommand{\maketitle}{ ... } や
+  % \renewcommand{\@maketitle}{ ... } を追加してください
+
+\else
+  % 指定外の数字が入った場合は、ノーマル版を使用する
+  \renewcommand{\maketitle}{
+    % --- 表紙 ---
+    \begin{titlepage}
+      \centering
+      \sffamily\gtfamily
+      \vspace*{2.5cm}
+      {\Huge \@title }\\[1.2em]
+      \ifx\@subtitle\@empty \else
+        {\Large \@subtitle}
+      \fi
+      \vfill
+      \begin{tabular}{@{}ll@{}}
+        \ifx\@experimentDate\@empty \else {\large 実験日} & {\large ：\@experimentDate}\\[0.4em] \fi
+        \ifx\@submissionDate\@empty \else {\large 提出日} & {\large ：\@submissionDate}\\[0.4em] \fi
+        \ifx\@affiliation\@empty    \else {\large 所属}   & {\large ：\@affiliation}\\[0.4em] \fi
+        \ifx\@studentID\@empty      \else {\large 学籍番号} & {\large ：\@studentID}\\[0.4em] \fi
+        {\large 氏名}     & {\large ：\@author}
+      \end{tabular}
+      \vspace*{2cm}
+    \end{titlepage}
+    % --- 目次 ---
+    \newpage
+    \thispagestyle{empty}
+    \tableofcontents
+    \newpage
+    % --- 本文開始の設定 ---
+    \setcounter{page}{1}
+  }
+\fi
