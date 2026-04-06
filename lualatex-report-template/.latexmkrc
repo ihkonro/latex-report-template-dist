@@ -1,4 +1,8 @@
 #!/usr/bin/env perl
+use strict;
+use warnings;
+use File::Spec;
+use Cwd 'abs_path';
 
 # --- LuaLaTeX設定 (.latexmkrc) ---
 
@@ -16,15 +20,42 @@ $lualatex = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
 $bibtex = 'upbibtex %O %S';
 $makeindex = 'upmendex %O -o %D %S';
 
-# Gitのコマンドを使って、一番上のフォルダ（リポジトリのルート）の絶対パスを取得
-my $repo_root = `git rev-parse --show-toplevel 2> /dev/null`;
-chomp($repo_root); # 余計な改行を削除
+# styファイルの取得
+sub get_git_root {
+    my $dir = abs_path('.');
+    while (1) {
+        # .git フォルダ（またはファイル）が存在するかチェック
+        if (-e File::Spec->catfile($dir, '.git')) {
+            return $dir;
+        }
+        my $parent = File::Spec->catpath((File::Spec->splitpath($dir))[0,1], '..');
+        $parent = abs_path($parent);
+        
+        # ルートディレクトリまで到達したら終了
+        last if $dir eq $parent;
+        $dir = $parent;
+    }
+    return undef;
+}
 
-# もしGit管理下であれば、絶対パスを使って探索パスを設定
-if ($repo_root ne '') {
-    # Windowsでも動くようにパスを安全に結合
-    $ENV{'TEXINPUTS'} = "$repo_root/lib/lualatex-report-template-sty//;" . $ENV{'TEXINPUTS'};
+my $root = get_git_root();
+
+if (defined $root) {
+    # Windowsのバックスラッシュをスラッシュに置換（TeX用）
+    $root =~ s/\\/\//g;
+    
+    # lib/lualatex-report-template-sty を追加
+    # 末尾の // はサブディレクトリも再帰的に探す指定
+    my $sty_path = "$root/lib/lualatex-report-template-sty//";
+    
+    # Windowsの区切り文字「;」を使用。
+    # 先頭に自分のパス、末尾に「;」を置くことで標準パスも維持される
+    $ENV{'TEXINPUTS'} = "$sty_path;" . ($ENV{'TEXINPUTS'} // '');
+    
+    print "--- Template Path Loaded ---\n";
+    print "Git Root: $root\n";
+    print "Style Path: $sty_path\n";
+    print "----------------------------\n";
 } else {
-    # 万が一Git管理下でなかった場合の保険
-    $ENV{'TEXINPUTS'} = '../lib/lualatex-report-template-sty//;' . $ENV{'TEXINPUTS'};
+    print "Warning: .git not found. Using default paths.\n";
 }
