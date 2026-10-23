@@ -1,0 +1,60 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{settings/base}
+
+% ========================================
+% 数理系パッケージ
+% ========================================
+\RequirePackage{amsmath}
+\RequirePackage{mathtools} % amsmath改善
+\RequirePackage{siunitx} % SI単位系
+
+% ========================================
+% フォント設定
+% ========================================
+\RequirePackage{fontspec}
+\RequirePackage{luatexja-fontspec}
+\RequirePackage{unicode-math}
+
+% --- 欧文フォント ---
+\setmainfont{Latin Modern Roman} % セリフ体
+\setsansfont{TeX Gyre Heros} % サンセリフ体
+\setmonofont{Latin Modern Mono} % タイプライタ体
+\setmathfont{New Computer Modern Math} % 数式フォント
+
+% --- 和文フォント ---
+\RequirePackage[haranoaji, deluxe]{luatexja-preset}
+
+% --- その他フォント設定 ---
+\RequirePackage{microtype} % マイクロタイポグラフィー
+
+% ========================================
+% 図・表
+% ========================================
+\RequirePackage{graphicx} % 図作成
+\RequirePackage{tikz} % TikZ
+\RequirePackage{float} % 図をその場に強制固定
+\RequirePackage{tabularray} % 万能表作成（要UseTblrLibrary）
+\RequirePackage{pdfpages} % PDF挿入・結合
+
+% ========================================
+% 装飾
+% ========================================
+\RequirePackage{xcolor} % 色
+\RequirePackage{tcolorbox} % tcolorbox
+
+% ========================================
+% リンク・参照
+% ========================================
+\RequirePackage[superscript]{cite} % 参考文献右肩表示
+\RequirePackage{hyperref} % PDFしおり、相互参照、URLリンク
+\RequirePackage{xurl} % URL
+\RequirePackage{cleveref}
+
+% --- Cleveref設定 ---
+\crefname{equation}{式}{式}
+\crefname{figure}{図}{図}
+\crefname{table}{表}{表}
+\crefname{page}{ページ}{ページ}
+\crefname{section}{節}{節}
+\crefname{appendix}{付録}{付録}
+\creflabelformat{equation}{#2#1#3}

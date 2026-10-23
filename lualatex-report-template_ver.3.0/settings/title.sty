@@ -1,0 +1,142 @@
+\makeatletter
+
+% ========================================
+% フォントスタイル
+% ========================================
+% --- タイトル ---
+\newcommand{\fontstyle}{%
+    \ifcase\fontStyle
+    % --- 0：未使用 ---
+    \or
+    % --- 1：ゴシック（サンセリフ）体 ---
+        \sffamily\gtfamily
+    \or
+    % --- 2：明朝（セリフ体） ---
+        \rmfamily\mcfamily
+    \fi
+}
+
+% --- セクション ---
+\ModifyHeading{section}{
+    font={\Large\bfseries\fontstyle},
+}
+
+% --- サブセクション ---
+\ModifyHeading{subsection}{
+    font={\large\bfseries\fontstyle},
+}
+
+% --- サブサブセクション ---
+\ModifyHeading{subsubsection}{
+    font={\normalsize\bfseries\fontstyle},
+}
+
+% ========================================
+% タイトルスタイル
+% ========================================
+% --- コマンド定義 ---
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\newcommand{\studentID}[1]{\def\@studentID{#1}}
+\newcommand{\affiliation}[1]{\def\@affiliation{#1}}
+\newcommand{\experimentDate}[1]{\def\@experimentDate{#1}}
+\newcommand{\submissionDate}[1]{\def\@submissionDate{#1}}
+
+% --- 初期値設定 ---
+\subtitle{}
+\studentID{}
+\affiliation{}
+\experimentDate{}
+\submissionDate{}
+
+% --- 指定がない場合は1（ノーマル） ---
+\providecommand{\titleStyle}{1}
+
+\ifcase\titleStyle
+    % ========================================
+    % 0：未使用
+    % ========================================
+\or
+    % ========================================
+    % 1：ノーマル版
+    % ========================================
+    \renewcommand{\maketitle}{
+        % --- 表紙 ---
+        \begin{titlepage}
+            \centering
+            \fontstyle
+            \vspace*{25mm}
+            {\Huge\@title}\\[1.2em]
+            \ifx \@subtitle\@empty
+            \else
+                {\Large \@subtitle}
+            \fi
+            \vfill
+            \begin{tabular}{@{}ll@{}}
+                \ifx \@experimentDate\@empty
+                \else
+                    {\large 実験日} & {\large ：\@experimentDate}\\[0.4em]
+                \fi
+                \ifx \@submissionDate\@empty
+                \else
+                    {\large 提出日} & {\large ：\@submissionDate}\\[0.4em]
+                \fi
+                \ifx \@affiliation\@empty
+                \else
+                    {\large 所属} & {\large ：\@affiliation}\\[0.4em]
+                \fi
+                \ifx \@studentID\@empty
+                \else
+                    {\large 学籍番号} & {\large ：\@studentID}\\[0.4em]
+                \fi
+                {\large 氏名} & {\large ：\@author}
+            \end{tabular}
+            \vspace*{20mm}
+        \end{titlepage}
+        % --- 目次 ---
+        \newpage
+        \thispagestyle{empty}
+        \tableofcontents
+        \newpage
+        % --- 本文 ---
+        \setcounter{page}{1}
+    }
+\or
+    % ========================================
+    % 2：シンプル版
+    % ========================================
+    \renewcommand{\@maketitle}{
+        \newpage
+        % --- タイトル・サブタイトル ---
+        \begin{center}
+            \fontstyle
+            {\huge \@title \par}
+            \ifx \@subtitle\@empty
+                \vspace{0.8em}
+            \else
+                \vspace{0.4em}
+                {\Large \@subtitle \par}
+                \vspace{0.4em}
+            \fi
+        \end{center}
+        % --- 所属・学籍番号・氏名 ---
+        \begin{flushright}
+            \fontstyle
+            {\large
+                \ifx \@affiliation\@empty
+                    \ifx \@studentID\@empty
+                    \else
+                        \@studentID \\[0.4em]
+                    \fi
+                \else
+                    \@affiliation
+                    \ifx \@studentID\@empty
+                    \else
+                        \quad \@studentID
+                    \fi
+                    \\[0.4em]
+                \fi
+                \@author \par
+            }
+        \end{flushright}
+    }
+\fi

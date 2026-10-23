@@ -1,0 +1,25 @@
+% --- 余白 ---
+\usepackage[%
+  top=25mm,
+  bottom=25mm,
+  left=20mm,
+  right=20mm
+]{geometry}
+
+% --- 句読点 ---
+\usepackage{newunicodechar} % 「。、」を「．，」に変更
+\newunicodechar{、}{，}
+\newunicodechar{。}{．}
+
+% --- インデント・段落間の空白 ---
+% \setlength{\parindent}{0pt} % インデントなし
+% \setlength{\parskip}{0.6em} % 段落間に空きを入れる
+
+% --- 図表・式の番号設定 ---
+\numberwithin{equation}{section} % 数式番号を節ごとに
+\counterwithin{table}{section} % 表番号を節ごとに
+\counterwithin{figure}{section} % 図番号を節ごとに
+
+% --- BibLaTeX ---
+% \usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}
+% \addbibresource{references.bib} % BiBLaTeXのファイル名
