@@ -15,6 +15,11 @@ LuaLaTeXを用いて、日本語のレポートを作成するためのテンプ
 
 各スタイルの仕上がりは、以下のPDFで確認できます。
 
+| [`normal-rmmc`](sample/sample-normal-rmmc.pdf) | [`normal-sfgt`](sample/sample-normal-sfgt.pdf) | [`simple-rmmc`](sample/sample-simple-rmmc.pdf) | [`simple-rmmc`](sample/sample-simple-sfgt.pdf) |
+| :---: | :---: | :---: | :---: |
+| [![normal-rmmc](sample/sample-normal-rmmc-01.png)](sample/sample-normal-rmmc.pdf) | [![normal-sfgt](sample/sample-normal-sfgt-01.png)](sample/sample-normal-sfgt.pdf) | [![simple-rmmc](sample/sample-simple-rmmc-01.png)](sample/sample-simple-rmmc.pdf) | [![simple-sfgt](sample/sample-simple-sfgt-01.png)](sample/sample-simple-sfgt.pdf) |
+
+
 | ファイル | レイアウト | タイトル・見出し |
 |:---|:---|:---|
 | `sample-normal-rmmc.pdf` | ノーマル版（表紙・目次あり） | 明朝体・セリフ体 |
