@@ -15,10 +15,10 @@ LuaLaTeXを用いて、日本語のレポートを作成するためのテンプ
 
 各スタイルの仕上がりは、以下のPDFで確認できます。
 
-| [`normal-rmmc`](sample/sample-normal-rmmc.pdf) | [`normal-sfgt`](sample/sample-normal-sfgt.pdf) | [`simple-rmmc`](sample/sample-simple-rmmc.pdf) | [`simple-rmmc`](sample/sample-simple-sfgt.pdf) |
+| `normal-rmmc` | `normal-sfgt` | `simple-rmmc` | `simple-rmmc` |
 | :---: | :---: | :---: | :---: |
 | [![normal-rmmc](sample/sample-normal-rmmc-01.png)](sample/sample-normal-rmmc.pdf) | [![normal-sfgt](sample/sample-normal-sfgt-01.png)](sample/sample-normal-sfgt.pdf) | [![simple-rmmc](sample/sample-simple-rmmc-01.png)](sample/sample-simple-rmmc.pdf) | [![simple-sfgt](sample/sample-simple-sfgt-01.png)](sample/sample-simple-sfgt.pdf) |
-
+| [ダウンロード](https://raw.githubusercontent.com/ihkonro/latex-report-template-dist/master/sample/sample-normal-rmmc.pdf) | [ダウンロード](https://raw.githubusercontent.com/ihkonro/latex-report-template-dist/master/sample/sample-normal-sfgt.pdf) | [ダウンロード](https://raw.githubusercontent.com/ihkonro/latex-report-template-dist/master/sample/sample-simple-rmmc.pdf) | [ダウンロード](https://raw.githubusercontent.com/ihkonro/latex-report-template-dist/master/sample/sample-simple-sfgt.pdf) |
 
 | ファイル | レイアウト | タイトル・見出し |
 |:---|:---|:---|
