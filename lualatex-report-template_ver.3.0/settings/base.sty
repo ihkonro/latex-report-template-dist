@@ -7,6 +7,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{mathtools} % amsmath改善
 \RequirePackage{siunitx} % SI単位系
+\RequirePackage[version=4]{mhchem} % 化学
 
 % ========================================
 % フォント設定
@@ -33,7 +34,18 @@
 \RequirePackage{graphicx} % 図作成
 \RequirePackage{tikz} % TikZ
 \RequirePackage{float} % 図をその場に強制固定
-\RequirePackage{tabularray} % 万能表作成（要UseTblrLibrary）
+\RequirePackage{tabularray} % 万能表作成
+\UseTblrLibrary{
+    amsmath,
+    booktabs,
+    counter,
+    diagbox,
+    functional,
+    nameref,
+    siunitx,
+    varwidth,
+    zref
+}
 \RequirePackage{pdfpages} % PDF挿入・結合
 
 % ========================================
@@ -41,13 +53,20 @@
 % ========================================
 \RequirePackage{xcolor} % 色
 \RequirePackage{tcolorbox} % tcolorbox
+\RequirePackage{luatexja-ruby} % ルビ
+
+% ========================================
+% その他
+% ========================================
+\RequirePackage{listings,jvlisting} % ソースコード
+\RequirePackage{enumitem} % itemize, enumerate環境強化
 
 % ========================================
 % リンク・参照
 % ========================================
 \RequirePackage[superscript]{cite} % 参考文献右肩表示
-\RequirePackage{hyperref} % PDFしおり、相互参照、URLリンク
 \RequirePackage{xurl} % URL
+\RequirePackage{hyperref} % PDFしおり、相互参照、URLリンク
 \RequirePackage{cleveref}
 
 % --- Cleveref設定 ---
