@@ -1,4 +1,10 @@
 # LaTeXレポートテンプレート
+PDF版マニュアルは以下から閲覧・ダウンロードできます。
+
+| マニュアル |
+| :---: |
+| [![manual](manual/lualatex-report-template_ver.3.0_manual-01.png)](manual/lualatex-report-template_ver.3.0_manual.pdf) |
+|  [ダウンロード](https://raw.githubusercontent.com/ihkonro/latex-report-template-dist/master/manual/lualatex-report-template_ver.3.0_manual.pdf) |
 
 LuaLaTeXを用いて、日本語のレポートを作成するためのテンプレートです。
 
@@ -99,7 +105,7 @@ LuaLaTeXを用いて、日本語のレポートを作成するためのテンプ
 
 1. 上記「テンプレートのダウンロード」を参考にZIP形式でダウンロードします。**ZIPファイルは解凍しません。**
 2. Cloud LaTeXにログインします。
-3. 「新規プロジェクト」から、ZIPファイルを使用してプロジェクトを作成します。以下の項目を設定してください
+3. 「新規プロジェクト」から、ZIPファイルを使用してプロジェクトを作成します。以下の項目を設定してください。
    - 「ZIPファイルを選択」
    - プロジェクト名：任意
    - 説明：任意
@@ -124,7 +130,7 @@ LuaLaTeXを用いて、日本語のレポートを作成するためのテンプ
 ├── figures/              # 挿入画像
 ├── settings/             # 各種設定ファイル
 │   ├── base.sty          # パッケージ・マクロの定義
-│   ├── title.sty         # タイトルデザイン
+│   ├── title.sty         # タイトル・見出しデザイン
 │   └── config.tex        # レイアウト設定
 └── out/                  # PDF・中間ファイルの出力先
 ```
@@ -138,7 +144,7 @@ LuaLaTeXを用いて、日本語のレポートを作成するためのテンプ
 | `contents/reference.tex` | `thebibliography`環境を使用する場合の参考文献 |
 | `settings/base.sty` | パッケージの読み込み、独自コマンドの定義 |
 | `settings/config.tex` | 余白などのレイアウト設定 |
-| `settings/title.sty` | タイトルのデザイン |
+| `settings/title.sty` | タイトル・見出しのデザイン |
 | `.latexmkrc` | `latexmk`の動作設定 |
 | `settings.json` | VS Code・LaTeX Workshop用のビルド設定 |
 | `data/` | CSVファイルやソースコードなど |
