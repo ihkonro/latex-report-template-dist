@@ -4,7 +4,7 @@
 % フォントスタイル
 % ========================================
 % --- タイトル ---
-\newcommand{\fontstyle}{%
+\newcommand{\fontstyle}{
     \ifcase\fontStyle
     % --- 0：未使用 ---
     \or
@@ -65,10 +65,10 @@
             \centering
             \fontstyle
             \vspace*{25mm}
-            {\Huge\@title}\\[1.2em]
+            {\Huge\bfseries\@title}\\[1.2em]
             \ifx \@subtitle\@empty
             \else
-                {\Large \@subtitle}
+                {\Large\@subtitle}
             \fi
             \vfill
             \begin{tabular}{@{}ll@{}}
@@ -109,12 +109,12 @@
         % --- タイトル・サブタイトル ---
         \begin{center}
             \fontstyle
-            {\huge \@title \par}
+            {\huge\bfseries\@title \par}
             \ifx \@subtitle\@empty
                 \vspace{0.8em}
             \else
                 \vspace{0.4em}
-                {\Large \@subtitle \par}
+                {\Large\@subtitle \par}
                 \vspace{0.4em}
             \fi
         \end{center}
@@ -131,7 +131,7 @@
                     \@affiliation
                     \ifx \@studentID\@empty
                     \else
-                        \quad \@studentID
+                        \quad\@studentID
                     \fi
                     \\[0.4em]
                 \fi

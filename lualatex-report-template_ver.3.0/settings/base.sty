@@ -7,7 +7,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{mathtools} % amsmath改善
 \RequirePackage{siunitx} % SI単位系
-\RequirePackage[version=4]{mhchem} % 化学
+\RequirePackage[version=4]{mhchem} % 化学式・反応式
 
 % ========================================
 % フォント設定
@@ -58,7 +58,8 @@
 % ========================================
 % その他
 % ========================================
-\RequirePackage{listings,jvlisting} % ソースコード
+\RequirePackage{listings} % ソースコード
+\RequirePackage{jvlisting} % ソースコード（日本語）
 \RequirePackage{enumitem} % itemize, enumerate環境強化
 
 % ========================================
@@ -69,11 +70,33 @@
 \RequirePackage{hyperref} % PDFしおり、相互参照、URLリンク
 \RequirePackage{cleveref}
 
-% --- Cleveref設定 ---
+% ========================================
+% Cleveref設定
+% ========================================
+% --- 数式・図表 ---
 \crefname{equation}{式}{式}
 \crefname{figure}{図}{図}
 \crefname{table}{表}{表}
-\crefname{page}{ページ}{ページ}
+
+% --- 文章構造 ---
 \crefname{section}{節}{節}
+\crefname{subsection}{小節}{小節}
+\crefname{subsubsection}{小々節}{小々節}
+\crefname{paragraph}{段落}{段落}
+\crefname{page}{ページ}{ページ}
+
+% --- その他 ---
 \crefname{appendix}{付録}{付録}
-\creflabelformat{equation}{#2#1#3}
+\crefname{lstlisting}{コード}{コード}
+
+% --- 2件の参照 ---
+\newcommand{\crefpairconjunction}{と}
+
+% --- 3件以上の参照 ---
+\newcommand{\crefmiddleconjunction}{、}
+% \creflastconjunction{、および}
+
+% --- 異なる参照グループ間の接続 ---
+\newcommand{\crefpairgroupconjunction}{と}
+\newcommand{\crefmiddlegroupconjunction}{、}
+\newcommand{\creflastgroupconjunction}{、および}
